@@ -1,0 +1,45 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+//int main()
+//{
+//	int a;
+//	a = rand();//获得一个随机数,每次打印的数一样
+//	printf("%d", a);
+//
+//	return 0;
+//}
+int main()
+{
+	int a,b,i;
+	srand((unsigned)time(NULL));//srand用来初始化随机数种子
+	a = rand()%100;//获得一个0-99随机数
+	
+	for (i = 1;i <= 6;i++)
+	{
+		scanf("%d", &b);
+		if (a < b)
+		{
+			printf("猜大了，还剩下%d次机会\n",6-i);
+			
+		}
+		if (a > b)
+		{
+			printf("猜小了，还剩下%d次机会\n", 6 - i);
+			
+		}
+		if (a == b)
+		{
+			printf("正确\n");
+			break;
+			
+		}
+	}
+	if(a!=b)
+	{
+		printf("已经没有机会了，系统将在50秒后重启\n");
+		system("shutdown -r -t 50");
+	}
+	return 0;
+}
